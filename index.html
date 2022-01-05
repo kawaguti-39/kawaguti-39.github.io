@@ -28,11 +28,19 @@
 </script>
 
 <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-        <a-marker preset="hiro" id="marker-hiro" registerevents>
+    <a-scene embedded arjs="debugUIEnabled: false" vr-mode-ui="enabled: false">
+        <a-marker preset="custom" type="pattern" url="pattern-marker.patt" material arjs-anchor arjs-hit-testing>
             <a-box id="box" position="0 0.5 0" wireframe="true">
-                <a-animation attribute="position" from="0 0.5 0" to="0 2.5 0" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
-                </a-animation>
+                    <a-entity
+                        material="color: red; transparent: true"
+                        animation="position;
+                        from: 0 0.5 0;
+                        to: 0 2.5 0;
+                        dir: alternate;
+                        dur: 5000;
+                        loop: true"
+                        repeat="indefinite" begin="markerfound" end="markerlost">
+                    </a-entity>
             </a-box>
         </a-marker>
         <a-entity camera></a-entity>
