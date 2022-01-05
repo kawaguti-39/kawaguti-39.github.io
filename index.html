@@ -1,46 +1,42 @@
-<!doctype HTML>
 <html>
-<head>
-　<meta charset="UFT-8">
-　<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-　<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
+<script>
+    AFRAME.registerComponent('registerevents', {
+        init: function () {
+            var marker = this.el;
 
-　<script>
-　　AFRAME.registerComponent('change-url',{
-　  schema : {},
-　  init : function(){
-　    this.el.addEventListener('click',function(e){
-　      window.location.href = "https://www.google.co.jp/";
-　    })
-　   }
-　 })
-　</script>
-</head>
+            // マーカーを検出したイベントの登録
+            marker.addEventListener('markerFound', function () {
+                var markerId = marker.id;
+                console.log('markerFound', markerId);
 
-<body>
-    <a-assets>
-        <img id="AAA" src="christmas_santa_sori.jpg" />
-    </a-assets>
+                // アニメーションの開始
+                document.querySelector('#box').emit('markerfound');
+            });
 
-    <a-scene embedded arjs="debugUIEnabled: false" vr-mode-ui="enabled: false">
-    <a-marker preset="custom" type="pattern" url="pattern-marker.patt" material arjs-anchor arjs-hit-testing>
+            // マーカーを見失ったイベントの登録
+            marker.addEventListener('markerLost', function () {
+                var markerId = marker.id;
+                console.log('markerLost', markerId);
 
-        <a-entity
-            material="color: red; transparent: true"
-            animation="property: components.material.material.opacity;
-            from: 0;
-            to: 1;
-            dir: alternate;
-            dur: 1000;
-            loop: true">
-            <a-image class="AAA" src="#AAA" position="-0.5 0 0" rotation="-90 0 0" change-url material geometry></a-image>
-        </a-entity>
+                // アニメーションの停止
+                document.querySelector('#box').emit('markerlost');
+            });
+        }
+    });
+</script>
 
-    </a-marker>
-
-    <a-entity camera raycaster= "objects: .AAA" cursor="fuse: false; rayOrigin: mouse;"></a-entity>
-    <a-entity camera raycaster= "objects: .BBB" cursor="fuse: false; rayOrigin: mouse;"></a-entity>
-
-</a-scene>
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+        <a-marker preset="hiro" id="marker-hiro" registerevents>
+            <a-box id="box" position="0 0.5 0" wireframe="true">
+                <a-animation attribute="position" from="0 0.5 0" to="0 2.5 0" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
+                </a-animation>
+            </a-box>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
+
 </html>
