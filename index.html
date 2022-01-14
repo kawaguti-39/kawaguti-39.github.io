@@ -1,25 +1,29 @@
-<!doctype HTML>
-<html>
-<!-- <script type="text/javascript">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<script type="text/javascript">
     var v = document.getElementById("video");
 
     function playVideo() {
         //動画を再生
         v.play();
     }
-</script> -->
+</script>
 
 <body>
 
-    <video src="maru_pasu.mp4"  controls playsinline></video>
+    <video src="maru_pasu.mp4"  controls muted autoplay playsinline loop></video>
 
-    <!-- <video id="video" width="400" height="300">
+    <video id="video" width="200" height="150">
         <source src="maru_pasu.mp4" >
-    </video> -->
+    </video>
     
-    <!-- <div style="position: fixed; bottom: 500px;">
-        <input type="button" value="再生" onClick="playVideo()">
-    </div> -->
+    <div style="position: fixed; bottom: 150px;">
+        <input type="button" value="再生" onClick="playVideo"()>
+    </div>
     
 </body>
 </htmL>
