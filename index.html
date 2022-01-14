@@ -6,16 +6,16 @@
 
 <script type="text/javascript">
     var v = document.getElementById("video");
-
-    function playVideo() {
-        //動画を再生
-        v.play();
-    }
+    document.getElementById("nagasa").innerHTML = v.duration;
+    // function playVideo() {
+    //     //動画を再生
+    //     v.play();
+    // }
 </script>
 
 <body>
 
-    <video id="video"src="maru_pasu.mp4"></video>
+    <video id="video"src="maru_pasu.mp4" width="400" height="300"></video>
     
     <div style="bottom: 150px;">
         <input type="button" value="再生" onClick="playVideo"()>
