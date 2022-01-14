@@ -5,35 +5,23 @@
 <!-- AR.js ライブラリの読み込み -->
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 <!-- Clickイベント -->
-<script>
-　　AFRAME.registerComponent('change-movie',{
-　  schema : {},
-　  init : function(){
-　    this.el.addEventListener('click',function(e){
-        const video01 = document.getElementById("#BBB");
-        video01.play();
-　    })
-　   }
-　 })
-　</script>
 
 <body style='margin : 0px; overflow: hidden;'>
 <a-assets>
     <img id="santa_image" src="christmas_santa_sori.jpg" />
-    <video id="BBB" src="maru_pasu.mp4" loop="false"></video>
 </a-assets>
 
 <a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
 
     <a-marker preset="custom" type="pattern" url="pattern-marker.patt" material arjs-anchor arjs-hit-testing>
         <!-- マーカーに画像を表示する -->
-        <a-image src="#santa_image"  rotation="-90 0 0" change-movie material geometry ></a-image>
-        <a-video src="#BBB" position="0 2.5 -3" rotation="0 0 0" width="4" height="2.25"></a-video>
-
+        <a-image src="#santa_image"  rotation="-90 0 0" ></a-image>
+       
     </a-marker>
 
     <a-entity camera raycaster= "objects: .santa_image" cursor="fuse: false; rayOrigin: mouse;"></a-entity>
-    <a-entity camera raycaster= "objects: .BBB" cursor="fuse: false; rayOrigin: mouse;"></a-entity>
 </a-scene>
+        
+        <input type="button" value="再生" >
 </body>
 </html>
