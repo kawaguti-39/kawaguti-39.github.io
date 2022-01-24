@@ -8,12 +8,13 @@
 
 <body style='margin : 0px; overflow: hidden;'>
      
+<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
+
 <a-assets>
     <img id="santa_image" src="christmas_santa_sori.jpg" />
     <video playsinline webkit-playsinline id="load_movie" src="maru_pasu.mp4" loop="false"></video>
 </a-assets>
-
-<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
+     
 <!-- <a-entity
     id="playButton"
     geometry="primitive: plane; height: 1; width: 1"
@@ -22,6 +23,7 @@
     rotation="-90 0 0"
     ></a-entity>
  -->
+     
     <a-marker preset="custom" type="pattern" url="pattern-marker.patt" material arjs-anchor arjs-hit-testing>
         <a-video src="#load_movie"  rotation="-90 0 0" width = "80"  height = "60"></a-video>
 <!--         <a-image src="#santa_image"  rotation="-90 0 0" ></a-image> -->
