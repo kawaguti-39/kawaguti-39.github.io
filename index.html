@@ -28,11 +28,10 @@
     </div>
 
     <script >
-    function playVideo() {
-    var v = document.querySelector('#load_movie');
-    //動画を再生
-    v.play();
-}
+      window.addEventListener('click', function () {
+      var v = document.querySelector('#load_movie');
+      v.play();
+      });
     </script>
 </body>
 
