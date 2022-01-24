@@ -7,6 +7,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <body style='margin : 0px; overflow: hidden;'>
+    
+    <div style="position: fixed; bottom: 150px;">
+        <input type="button" id="plays" value="play" onclick="playVideo();">
+    </div>
 
     <a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
 
@@ -22,10 +26,6 @@
         <a-entity camera></a-entity>
 
     </a-scene> 
-
-    <div style="position: fixed; bottom: 150px;">
-        <input type="button" id="plays" value="play" onclick="playVideo();">
-    </div>
 
     <script type="text/javascript" src="movie.js"></script>
 </body>
