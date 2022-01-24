@@ -7,16 +7,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <body style='margin : 0px; overflow: hidden;'>
-    
-    <div style="position: fixed; bottom: 150px;">
-        <input type="button" id="plays" value="play" onclick="playVideo();">
-    </div>
 
     <a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
 
         <a-assets>
             <img id="santa_image" src="christmas_santa_sori.jpg" />
-            <video id="load_movie" playsinline webkit-playsinline autoplay src="maru_pasu.mp4" loop="false"></video>
+            <video id="load_movie" playsinline webkit-playsinline  src="maru_pasu.mp4" loop="false"></video>
         </a-assets>
 
         <a-marker type="pattern" url="pattern-marker.patt" >
@@ -27,7 +23,17 @@
 
     </a-scene> 
 
-    <script type="text/javascript" src="movie.js"></script>
+    <div style="position: fixed; bottom: 150px;">
+        <input type="button" id="plays" value="play" onclick="playVideo();">
+    </div>
+
+    <script >
+    function playVideo() {
+    var v = document.getElementById('#load_movie');
+    //動画を再生
+    v.play();
+}
+    </script>
 </body>
 
 </htmL>
